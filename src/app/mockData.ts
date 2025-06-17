@@ -1,28 +1,13 @@
-import { TaskItemType } from "./types";
+import { TaskItemType } from './types';
 export const tasksMock: TaskItemType[] = [
   {
-    id: "1",
-    description: "Clean the workspace",
+    id: '1',
+    description: 'Go to the gym and complete the routine',
     isCompleted: true
   },
   {
-    id: "2",
-    description: "Read a chapter of a book",
-    isCompleted: true
-  },
-  {
-    id: "3",
-    description: "Workout for 30 minutes",
-    isCompleted: false
-  },
-  {
-    id: "4",
-    description: "Update personal website",
-    isCompleted: false
-  },
-  {
-    id: "5",
-    description: "Buy groceries",
+    id: '2',
+    description: 'Read the first chapter of Clean code book',
     isCompleted: false
   }
 ];
