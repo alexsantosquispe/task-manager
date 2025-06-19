@@ -1,11 +1,11 @@
-import { ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
+import { ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface ButtonProps {
   label: string;
   onClick: () => void;
   icon?: ReactNode;
-  type?: "button" | "reset" | "submit";
+  type?: 'button' | 'reset' | 'submit';
   isDisabled: boolean;
   className?: string;
 }
@@ -14,7 +14,7 @@ export const Button = ({
   label,
   onClick,
   icon,
-  type = "button",
+  type = 'button',
   isDisabled = false,
   className
 }: ButtonProps) => {
@@ -22,10 +22,10 @@ export const Button = ({
     <button
       type={type}
       className={twMerge(
-        "flex gap-1 px-3 items-center md:px-6 bg-black/80 h-12 text-white rounded-lg font-semibold",
+        'flex h-12 items-center justify-center gap-1 rounded-lg bg-black/80 px-3 font-semibold text-white md:px-6',
         isDisabled
-          ? "bg-black/65 hover:cursor-not-allowed"
-          : "hover:bg-black hover:cursor-pointer",
+          ? 'bg-black/65 hover:cursor-not-allowed'
+          : 'hover:cursor-pointer hover:bg-black',
         className
       )}
       disabled={isDisabled}
