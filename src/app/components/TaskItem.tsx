@@ -1,10 +1,3 @@
-import {
-  cleanSelectedTask,
-  deleteTask,
-  selectTask,
-  toggleCompleteTask
-} from '../features/tasks/todoSlice';
-
 import CloseIcon from '../icons/CloseIcon';
 import { EditIcon } from '../icons/EditIcon';
 import IconButton from './atoms/IconButton';
@@ -12,7 +5,7 @@ import { TaskItemType } from '../types';
 import { TrashIcon } from '../icons/TrashIcon';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { useDispatch } from 'react-redux';
+import { useTaskItem } from './hooks/useTaskItem';
 
 interface TaskItemProps extends TaskItemType {
   isSelected: boolean;
@@ -24,23 +17,8 @@ export const TaskItem = ({
   isCompleted,
   isSelected
 }: TaskItemProps) => {
-  const dispatch = useDispatch();
-
-  const onCompleteTask = () => {
-    dispatch(toggleCompleteTask(id));
-  };
-
-  const selectTaskToEdit = (task: TaskItemType) => {
-    dispatch(selectTask(task));
-  };
-
-  const unSelectTask = () => {
-    dispatch(cleanSelectedTask());
-  };
-
-  const onDeleteTask = (id: string) => {
-    dispatch(deleteTask(id));
-  };
+  const { onCompleteTask, selectTaskToEdit, unSelectTask, onDeleteTask } =
+    useTaskItem(id);
 
   return (
     <div
