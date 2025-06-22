@@ -1,9 +1,9 @@
 export const Header = () => {
   return (
-    <header className="fixed backdrop-blur-md h-16 flex justify-center items-center w-full border-b border-gray-100 bg-white/75">
-      <nav className="flex md:w-[80rem] px-4">
-        <span className="font-bold text-lg">
-          TODO<span className="font-light">APP</span>
+    <header className='fixed flex h-16 w-full items-center justify-center border-b border-gray-100 bg-white/75 backdrop-blur-md'>
+      <nav className='flex px-4 md:w-[80rem]'>
+        <span className='text-lg font-bold'>
+          TODO<span className='font-light'>APP</span>
         </span>
       </nav>
     </header>

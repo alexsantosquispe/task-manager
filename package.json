@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "check": "prettier --check .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
