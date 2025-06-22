@@ -6,6 +6,7 @@ import { TrashIcon } from '../icons/TrashIcon';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { useTaskItem } from './hooks/useTaskItem';
+import cn from 'clsx';
 
 interface TaskItemProps extends TaskItemType {
   isSelected: boolean;
@@ -40,9 +41,10 @@ export const TaskItem = ({
 
         <label
           htmlFor={id}
-          className={`font-medium group-hover:cursor-pointer ${
-            isCompleted && 'text-gray-300 line-through'
-          }`}
+          className={twMerge(
+            'font-medium group-hover:cursor-pointer',
+            cn({ 'text-black/60 line-through': isCompleted })
+          )}
         >
           {description}
         </label>
@@ -50,17 +52,24 @@ export const TaskItem = ({
 
       <div className='flex justify-end gap-3 border-t border-gray-200 pt-2 md:border-none md:pt-0'>
         {isSelected ? (
-          <IconButton onClick={() => unSelectTask()}>
+          <IconButton
+            ariaLabel='unselect task to edit button'
+            onClick={() => unSelectTask()}
+          >
             <CloseIcon />
           </IconButton>
         ) : (
           <IconButton
+            ariaLabel='select task to edit button'
             onClick={() => selectTaskToEdit({ id, description, isCompleted })}
           >
             <EditIcon />
           </IconButton>
         )}
-        <IconButton onClick={() => onDeleteTask(id)}>
+        <IconButton
+          ariaLabel='delete task button'
+          onClick={() => onDeleteTask(id)}
+        >
           <TrashIcon />
         </IconButton>
       </div>
