@@ -14,18 +14,16 @@ export const TaskInput = () => {
     setTask(event.target.value);
 
   const actionButton = () => {
-    if (!taskSelected) {
-      dispatch(addNewTask(task));
-    } else {
+    if (taskSelected) {
       dispatch(editTask({ id: taskSelected.id, description: task }));
+    } else {
+      dispatch(addNewTask(task));
     }
     setTask('');
   };
 
   useEffect(() => {
-    if (taskSelected) {
-      setTask(taskSelected.description);
-    }
+    setTask(taskSelected?.description || '');
   }, [taskSelected]);
 
   return (
@@ -42,7 +40,7 @@ export const TaskInput = () => {
       </div>
 
       <Button
-        label={`${!taskSelected ? 'Add' : 'Edit'}`}
+        label={`${taskSelected ? 'Edit' : 'Add'}`}
         onClick={actionButton}
         isDisabled={!task.trim().length}
       />

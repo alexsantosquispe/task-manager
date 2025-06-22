@@ -1,7 +1,7 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { TaskItemType } from "../../types";
-import { tasksMock } from "../../mockData";
+import { TaskItemType } from '../../types';
+import { tasksMock } from '../../mockData';
 
 type TodoState = {
   tasks: TaskItemType[];
@@ -14,7 +14,7 @@ const initialState: TodoState = {
 };
 
 const todoSlice = createSlice({
-  name: "todos",
+  name: 'todos',
   initialState,
   reducers: {
     addNewTask: (state, action: PayloadAction<string>) => {
@@ -27,7 +27,7 @@ const todoSlice = createSlice({
     },
     editTask: (
       state,
-      action: PayloadAction<Omit<TaskItemType, "isCompleted">>
+      action: PayloadAction<Omit<TaskItemType, 'isCompleted'>>
     ) => {
       const { id, description } = action.payload;
       const task = state.tasks.find((task) => task.id === id);
@@ -40,6 +40,7 @@ const todoSlice = createSlice({
     deleteTask: (state, action: PayloadAction<string>) => {
       const id = action.payload;
       state.tasks = state.tasks.filter((task) => task.id !== id);
+      state.selectedTask = initialState.selectedTask;
     },
     selectTask: (state, action: PayloadAction<TaskItemType>) => {
       state.selectedTask = action.payload;
